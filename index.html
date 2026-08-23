@@ -31,6 +31,21 @@ text-shadow:0 0 18px rgba(212,175,55,.35);
 }
 table{width:100%;border-collapse:collapse}
 td,th{padding:12px;border-bottom:1px solid #ffffff20;text-align:left}
+
+.table-wrapper{
+overflow-x:auto;
+-webkit-overflow-scrolling:touch;
+}
+
+@media(max-width:700px){
+.table-wrapper table{
+min-width:650px;
+}
+td,th{
+font-size:13px;
+padding:10px;
+}
+}
 th{
 color:#d4af37;
 background:rgba(212,175,55,.08);
@@ -123,6 +138,7 @@ Negative: Normal response</p>
 
 <div class="card">
 <h2 class="gold">STUDENT DATABASE</h2>
+<div class="table-wrapper">
 <table>
 <tr><th>No</th><th>Name</th><th>Age</th><th>School</th><th>Sample ID</th><th>Status</th></tr>
 
