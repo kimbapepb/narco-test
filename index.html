@@ -108,6 +108,23 @@ font-weight:800;
 color:#ff4d5a;
 font-weight:700;
 }
+
+body{overflow-x:hidden;}
+body::before{content:"";position:fixed;inset:0;background:linear-gradient(90deg,transparent,rgba(212,175,55,.08),transparent);transform:translateX(-100%);animation:scan 6s infinite;pointer-events:none;z-index:999;}
+@keyframes scan{to{transform:translateX(100%)}}
+.card,.login-box{animation:fadeUp .7s ease both;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+.login-box{animation:pulseBox 3s infinite alternate;}
+@keyframes pulseBox{from{box-shadow:0 25px 70px #000}to{box-shadow:0 25px 90px rgba(212,175,55,.25)}}
+button{transition:.3s;cursor:pointer}
+button:hover{transform:translateY(-3px);box-shadow:0 0 20px rgba(212,175,55,.5)}
+tr{transition:.25s}
+tr:hover{transform:scale(1.01)}
+.analysis{padding:15px;margin-top:12px;border:1px solid rgba(212,175,55,.3);border-radius:12px;background:rgba(0,0,0,.25)}
+.loading-bar{height:5px;background:#d4af37;width:0;animation:loading 1.5s forwards;border-radius:5px}
+@keyframes loading{to{width:100%}}
+.result-pop{animation:pop .5s ease}
+@keyframes pop{from{opacity:0;transform:scale(.92)}to{opacity:1;transform:scale(1)}}
 </style>
 </head>
 <body>
@@ -971,10 +988,24 @@ document.getElementById("app").classList.remove("hidden");
 
 function openCase(i){
 currentIndex=i;
-currentIndex=i;
 let r=records[i];
 current=r.answer;
-document.getElementById("case").innerHTML=`
+
+let box=document.getElementById("case");
+box.innerHTML=`
+<h2 class="gold">Urine Result</h2>
+<div class="analysis">
+<b>EPB SAMPLE ANALYSIS</b><br>
+Accessing ${r.sample}...<br>
+Scanning urine indicators...
+<div class="loading-bar"></div>
+</div>`;
+
+setTimeout(()=>{
+box.classList.remove("result-pop");
+void box.offsetWidth;
+box.classList.add("result-pop");
+box.innerHTML=`
 <h2 class="gold">Urine Result</h2>
 <p>Name: ${r.name}</p>
 <p>School: ${r.school}</p>
@@ -988,6 +1019,7 @@ document.getElementById("case").innerHTML=`
 <button onclick="check('Positive')">POSITIVE</button>
 <button onclick="check('Negative')">NEGATIVE</button>
 <p id="feedback"></p>`;
+},1500);
 }
 
 function check(x){
