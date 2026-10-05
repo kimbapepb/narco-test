@@ -12,21 +12,12 @@
   font-weight: 400;
   font-display: swap;
 }
-@font-face {
-  font-family: "MADE Tommy";
-  src: local("MADE TOMMY Regular"), local("MADE Tommy"),
-       url("assets/MADE%20Tommy%20Regular.otf") format("opentype");
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-}
-
 body{
 margin:0;
 background:
 radial-gradient(circle at top,#3a4a61 0%,#1e2a38 35%,#131b2b 100%);
 color:white;
-font-family:"MADE Tommy",Helvetica,Arial,sans-serif;
+font-family:Helvetica,Arial,sans-serif;
 letter-spacing:.2px;
 }
 .card{
@@ -170,7 +161,7 @@ h1, h2, h3, h4, h5, h6, th, button {
   font-family: "Bebas Neue", sans-serif;
 }
 input, select, textarea {
-  font-family: "MADE Tommy", Helvetica, Arial, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
 }
 button, input, select, textarea {
   color: #131b2b;
@@ -184,7 +175,7 @@ input, select, textarea {
 
 <div id="app">
 <div class="card">
-<h2 class="gold">Elite Protection Bureau - Narcotics Testing Division</h2>
+<h2 class="gold">Elite Protection Bureau | Narcotics Testing Division</h2>
 </div>
 
 <div class="card">
@@ -1024,8 +1015,6 @@ let records=[{"name": "Nam Tae-Hyun", "school": "Korea International School Seou
 let current="";
 let currentIndex=0;
 
-else document.getElementById("err").innerHTML="<span class=\"wrong\">ACCESS DENIED</span>";
-}
 
 function openCase(i){
 currentIndex=i;
